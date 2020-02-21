@@ -1,0 +1,57 @@
+{% extends "./base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<!-- Styles block -->
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block content %}
+<div style="background-image: linear-gradient(to left bottom, #ebd2c5, #eec49a, #ddbd6c, #babb3f, #81bb16);">
+    <div class="container" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 text-justify">
+                <div class="page-header">
+                    <h3>Major tags</h3>
+                </div>
+
+                <div class="list-group">
+                    {% if current_user.is_authenticated %}
+                    <div class="container">
+                        <a class="btn btn-primary" href="{{url_for('main.add')}}">+ Add Blog</a>
+                    </div>
+                    {% endif %}
+                    <div class="list-group" style="margin-top:30px">
+                        {% for category in categories %}
+                        <a href="/blog/{{category}}" class="list-group-item list-group-item-action">{{category}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            <div>
+            </div>
+            <siv class="mt-5">
+                <div class="card blue lighten-2 text-black text-center p-3 mt-20 mb-3">
+                    <blockquote class="blockquote mb-0">
+                        <p>Quote of the day</p>
+                        {% for quote in quotes %}
+                            <p>{{quote.quote}}</p>
+                            <footer class="blockquote-footer">
+                                <big>
+                                By the great: <cite title="Source Title">{{quote.author}}</cite>
+                                </big>
+                            </footer>
+                        {% endfor %} 
+                    </blockquote>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        {% endblock %}
+    </div>
+</div>

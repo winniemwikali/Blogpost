@@ -1,0 +1,13 @@
+{% extends "./base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+    {% if current_user.is_authenticated %}
+    {% endif %}
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-justify">
+        {{ wtf.quick_form(post_form) }}
+        <div class="col-md-2"></div>
+        {% endblock %}
+    </div>

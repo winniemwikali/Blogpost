@@ -1,0 +1,7 @@
+body{
+    background-image: linear-gradient(to left bottom, #ebd2c5, #eec49a, #ddbd6c, #babb3f, #81bb16);
+}
+
+*{
+    color: red;
+}

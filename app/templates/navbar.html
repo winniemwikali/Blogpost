@@ -1,0 +1,19 @@
+ <div class="navbar navbar-light" style="background-color: #e3f2fd;" role="navigation">
+     <div class="container" style="color: green;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"> BLOGSPOT </a>
+        </div>
+         
+        <ul class="nav navbar-nav navbar-right">
+            {% if current_user.is_authenticated %}
+            <li><a
+                    href="{{url_for('main.profile',uname=current_user.username)}}">{{current_user.username| capitalize}}</a>
+            </li>
+            
+            <li><a href="{{url_for('auth.logout')}}">SIGN OUT</a></li>
+            {% else %}
+            <li><a href="{{url_for('auth.login')}}">SIGN IN</a></li>
+            {% endif%}
+        </ul>
+     </div>
+ </div>
